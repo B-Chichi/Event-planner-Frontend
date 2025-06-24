@@ -5,8 +5,6 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
-import { Input } from "@/components/ui/input";
-
 export function Dashboard({ children }) {
   return (
     <SidebarProvider>
