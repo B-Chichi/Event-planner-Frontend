@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   email: z
@@ -21,6 +22,13 @@ const schema = z.object({
 });
 
 export function LoginForm({ className, ...props }) {
+  const navigate = useNavigate();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    navigate("/dashboard");
+  };
+
+
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -41,7 +49,7 @@ export function LoginForm({ className, ...props }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleLogin}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
