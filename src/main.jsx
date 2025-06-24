@@ -8,6 +8,7 @@ import { DashboardLayout } from "./Pages/Dashboard";
 import EventForm from "./components/Layout/Event-Form";
 import Calendar2 from "./components/calendar-02";
 import { LoginForm } from './components/login-form'
+import SignInPage from './pages/signin'
 
 const routes = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const routes = createBrowserRouter([
   {
     path: "/login",
     element:<LoginForm/>
+  },
+  {
+    path: "/signin",
+    element: <SignInPage/>
   },
   {
     path: "/dashboard",
