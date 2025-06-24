@@ -1,9 +1,5 @@
 import * as React from "react";
-import {
-  Home,
-  Search,
-  Trash2,
-} from "lucide-react";
+import { Home, LayoutDashboard, Calendar, Trash2 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { NavSecondary } from "@/components/nav-secondary";
@@ -18,18 +14,24 @@ import {
 const data = {
   navMain: [
     {
-      title: "Search",
-      url: "#",
-      icon: Search,
-    },
-    {
       title: "Home",
       url: "#",
       icon: Home,
       isActive: true,
-    }
+    },
+    {
+      title: "Dashboard",
+      url: "#",
+      icon: LayoutDashboard,
+      isActive: true,
+    },
   ],
   navSecondary: [
+    {
+      title: "Calendar",
+      url: "#",
+      icon: Calendar,
+    },
     {
       title: "Logout",
       url: "#",
