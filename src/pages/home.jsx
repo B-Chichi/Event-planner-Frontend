@@ -18,8 +18,11 @@ const HomePage = () => {
             reprehenderit amet sint saepe.
           </p>
 
-          <Button asChild size="lg">
-            <Link to={"/login"}>Get Started</Link>
+          <Button className="mr-4">
+            <Link to={"/signin"}>Get Started</Link>
+          </Button>
+          <Button>
+            <Link to={"/login"}>Log int your account</Link>
           </Button>
         </div>
       </div>

@@ -1,9 +1,9 @@
-import { LoginForm } from "./components/login-form";
+import HomePage from "./pages/home";
 
 function App() {
   return (
     <>
-      <LoginForm/>
+      <HomePage/>
     </>
   );
 }

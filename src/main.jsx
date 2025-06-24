@@ -7,6 +7,7 @@ import Homepage from './pages/home'
 import { DashboardLayout } from "./Pages/Dashboard";
 import EventForm from "./components/Layout/Event-Form";
 import Calendar2 from "./components/calendar-02";
+import { LoginForm } from './components/login-form'
 
 const routes = createBrowserRouter([
   {
@@ -14,8 +15,12 @@ const routes = createBrowserRouter([
     element: <App />,
   },
   {
-    Path:"/home", 
+    path:"/home", 
     element:<Homepage/>
+  },
+  {
+    path: "/login",
+    element:<LoginForm/>
   },
   {
     path: "/dashboard",
@@ -35,4 +40,4 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={routes} />
   </StrictMode>
-
+)
