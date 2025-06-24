@@ -26,7 +26,13 @@ export function LoginForm({ className, ...props }) {
     resolver: zodResolver(schema),
   });
   return (
-    <div className={cn("flex flex-col gap-2", className)} {...props}>
+    <div
+      className={cn(
+        "flex items-center justify-center bg-background ",
+        className
+      )}
+      {...props}
+    >
       <Card>
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
