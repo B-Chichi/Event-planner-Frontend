@@ -40,7 +40,7 @@ const data = {
     },
     {
       title: "Logout",
-      url: "#",
+      url: "/",
       icon: Trash2,
     },
   ],
