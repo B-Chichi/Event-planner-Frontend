@@ -8,7 +8,7 @@ export function EventList() {
       venue: "Mombasa Shoreline",
       date: "July 15, 2025",
       imageUrl:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZXZlbnR8ZW58MHx8MHx8fDA%3D",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0CV1Nb-wajypPcr2fuTkbYLP61CyAiDa9_A&s"
     },
     {
       id: 2,

@@ -35,7 +35,7 @@ const data = {
   navSecondary: [
     {
       title: "Calendar",
-      url: "#",
+      url: "/calendar",
       icon: Calendar,
     },
     {

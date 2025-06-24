@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { DashboardLayout } from "./Pages/Dashboard";
 import EventForm from "./components/Layout/Event-Form";
+import Calendar2 from "./components/calendar-02";
 
 const routes = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const routes = createBrowserRouter([
   {
     path: "/add-event",
     element:<EventForm/>
+  },
+  {
+    path: "/calendar",
+    element:<Calendar2/>
   }
 ]);
 
