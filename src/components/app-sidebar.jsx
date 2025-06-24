@@ -23,7 +23,7 @@ const data = {
       title: "Dashboard",
       url: "#",
       icon: LayoutDashboard,
-      isActive: true,
+      isActive: false,
     },
   ],
   navSecondary: [

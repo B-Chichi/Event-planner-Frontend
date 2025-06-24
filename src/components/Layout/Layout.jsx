@@ -2,6 +2,7 @@ import { Dashboard } from "./dashboard";
 import { EventList } from "./Event-List";
 import { SearchBar } from "./Search-bar";
 
+
 export function Layout() {
   return (
     <>
