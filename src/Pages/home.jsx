@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 
-const HomePage = () => {
+export const HomePage = () => {
   return (
     <div className="overflow-hidden">
       <div className="relative mx-auto max-w-5xl px-6 py-28 lg:py-24">
@@ -29,5 +29,3 @@ const HomePage = () => {
     </div>
   );
 };
-
-export default HomePage;
