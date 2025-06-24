@@ -1,5 +1,6 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import z from "zod";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,6 +11,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
 const schema = z.object({
   email: z
@@ -25,20 +28,17 @@ export function LoginForm({ className, ...props }) {
     navigate("/dashboard");
   };
 
-
-
   const form = useForm({
     resolver: zodResolver(schema),
   });
   return (
     <div
       className={cn(
-        "flex items-center justify-center bg-background ",
+        "flex flex-col items-center justify-start bg-background h-screen pt-12",
         className
       )}
       {...props}
     >
-
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Welcome back</CardTitle>
@@ -47,7 +47,7 @@ export function LoginForm({ className, ...props }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleLogin}>
+          <form onSubmit={form.handleSubmit(handleLogin)}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
@@ -85,11 +85,6 @@ export function LoginForm({ className, ...props }) {
           </form>
         </CardContent>
       </Card>
-      <div
-        className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
-      </div>
     </div>
   );
 }

@@ -22,7 +22,7 @@ export const HomePage = () => {
             <Link to={"/signin"}>Get Started</Link>
           </Button>
           <Button>
-            <Link to={"/login"}>Log int your account</Link>
+            <Link to={"/login"}>Log in</Link>
           </Button>
         </div>
       </div>

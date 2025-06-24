@@ -1,14 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
+// import App from './App.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import {HomePage} from './Pages/home'
 import { DashboardLayout } from "./Pages/Dashboard";
 import EventForm from "./components/Layout/Event-Form";
 import Calendar2 from "./components/calendar-02";
 import { LoginForm } from './components/login-form'
-import SignInPage from './pages/signin'
+import { SignInForm } from './components/signin-form'
 
 const routes = createBrowserRouter([
   {
@@ -21,7 +21,7 @@ const routes = createBrowserRouter([
   },
   {
     path: "/signin",
-    element: <SignInPage/>
+    element: <SignInForm/>
   },
   {
     path: "/dashboard",
