@@ -1,12 +1,11 @@
-// import { LoginForm } from "./components/login-form";
+import { HomePage } from "./Pages/home";
 
+function App() {
+  return (
+    <>
+      <HomePage/>
+    </>
+  );
+}
 
-// function App() {
-//   return (
-//     <>
-//       <LoginForm />
-//     </>
-//   );
-// }
-
-// export default App;
+export default App;
