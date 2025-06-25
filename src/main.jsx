@@ -5,12 +5,12 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import {HomePage} from './Pages/home'
 import { DashboardLayout } from "./Pages/Dashboard";
-import EventForm from "./components/Layout/Event-Form";
-import Calendar2 from "./components/calendar-02";
+import { AddEventPage } from './Pages/Add-Event'
+import { CalendarPage } from './Pages/Calendar'
 import { LoginForm } from './components/login-form'
 import { SignInForm } from './components/signin-form'
-import Profile from './components/Layout/Profile'
-import Settings from './components/Layout/Settings'
+import { ProfilePage } from './Pages/Profile'
+import { SettingsPage } from './Pages/Settings' 
 
 const routes = createBrowserRouter([
   {
@@ -31,19 +31,19 @@ const routes = createBrowserRouter([
   },
   {
     path: "/settings",
-    element:<Settings/>
+    element:<SettingsPage/>
   },
   {
     path: "/add-event",
-    element: <EventForm />,
+    element: <AddEventPage />,
   },
   {
     path: "/calendar",
-    element: <Calendar2 />,
+    element: <CalendarPage />,
   },
   {
     path: "/profile",
-    element:<Profile/>
+    element:<ProfilePage/>
   }
 
 ]);
