@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Home, LayoutDashboard, Calendar, Trash2, Plus, SquarePlusIcon } from "lucide-react";
+import { Home, LayoutDashboard, Calendar, Trash2, SquarePlusIcon, Settings } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { NavSecondary } from "@/components/nav-secondary";
@@ -42,6 +42,11 @@ const data = {
       title: "Logout",
       url: "/login",
       icon: Trash2,
+    },
+    {
+      title: "Settings",
+      url: "#",
+      icon:Settings
     },
   ],
 };

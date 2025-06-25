@@ -7,7 +7,7 @@ export function Layout() {
   return (
     <>
       <Dashboard>
-        <h1 className="text-5xl">Dashboard</h1>
+        <h1 className="text-5xl">Event Planner</h1>
         <SearchBar />
         <EventList />
       </Dashboard>

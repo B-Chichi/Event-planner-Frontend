@@ -51,7 +51,7 @@ export function SignInForm({ className, ...props }) {
     >
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Welcome back</CardTitle>
+          <CardTitle className="text-xl">Create Account</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -102,6 +102,12 @@ export function SignInForm({ className, ...props }) {
                   <Button type="submit" className="w-full">
                     Signin
                   </Button>
+                  <div className="text-center text-sm">
+                    Already have an account?
+                    <a href="/login" className="underline underline-offset-4">
+                      Login
+                    </a>
+                  </div>
                 </div>
               </div>
             </form>
