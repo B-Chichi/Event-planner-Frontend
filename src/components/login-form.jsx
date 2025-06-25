@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
@@ -76,10 +76,10 @@ export function LoginForm({ className, ...props }) {
                 </Button>
               </div>
               <div className="text-center text-sm">
-                Don&apos;t have an account?
-                <a href="/signin" className="underline underline-offset-4">
+                Don&apos;t have an account?{" "}
+                <Link to={"/signin"} className="underline underline-offset-4">
                   Sign up
-                </a>
+                </Link>
               </div>
             </div>
           </form>

@@ -35,7 +35,7 @@ const data = {
       title: "Add Event",
       url: "/add-event",
       icon: SquarePlusIcon,
-      isActive: true,
+      isActive: false,
     },
   ],
   navSecondary: [
