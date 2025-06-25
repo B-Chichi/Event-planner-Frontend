@@ -51,7 +51,7 @@ export function SignInForm({ className, ...props }) {
     >
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Welcome back</CardTitle>
+          <CardTitle className="text-xl">Welcome to event planner app</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
