@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import {  useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,16 +30,18 @@ const schema = z.object({
     .email({ message: "Enter a valid email address" }),
   password: z
     .string({ required_error: "Password is required" })
-    .min(6, { message: "Password cannot be less than 6 characters" }),
+    .min(4, { message: "Password cannot be less than 4 characters" }),
 });
 
 export function SignInForm({ className, ...props }) {
+  const navigate = useNavigate();
   const form = useForm({
     resolver: zodResolver(schema),
   });
 
   const onSubmit = (values) => {
     console.log(values);
+    navigate("/dashboard");
   };
   return (
     <div
