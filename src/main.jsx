@@ -1,16 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-// import App from './App.jsx'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import {HomePage} from './Pages/home'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { HomePage } from "./Pages/home";
 import { DashboardLayout } from "./Pages/Dashboard";
-import { AddEventPage } from './Pages/Add-Event'
-import { CalendarPage } from './Pages/Calendar'
-import { LoginForm } from './components/login-form'
-import { SignInForm } from './components/signin-form'
-import { ProfilePage } from './Pages/Profile'
-import { SettingsPage } from './Pages/Settings' 
+import { AddEventPage } from "./Pages/Add-Event";
+import { CalendarPage } from "./Pages/Calendar";
+import { LoginForm } from "./components/login-form";
+import { SignInForm } from "./components/signin-form";
+import { ProfilePage } from "./Pages/Profile";
+import { SettingsPage } from "./Pages/Settings";
 
 const routes = createBrowserRouter([
   {
@@ -19,11 +18,11 @@ const routes = createBrowserRouter([
   },
   {
     path: "/login",
-    element:<LoginForm/>
+    element: <LoginForm />,
   },
   {
     path: "/signin",
-    element: <SignInForm/>
+    element: <SignInForm />,
   },
   {
     path: "/dashboard",
@@ -31,7 +30,7 @@ const routes = createBrowserRouter([
   },
   {
     path: "/settings",
-    element:<SettingsPage/>
+    element: <SettingsPage />,
   },
   {
     path: "/add-event",
@@ -43,13 +42,12 @@ const routes = createBrowserRouter([
   },
   {
     path: "/profile",
-    element:<ProfilePage/>
-  }
-
+    element: <ProfilePage />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={routes} />
   </StrictMode>
-)
+);
