@@ -27,7 +27,7 @@ const data = {
     },
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: LayoutDashboard,
       isActive: false,
     },
