@@ -9,6 +9,8 @@ import EventForm from "./components/Layout/Event-Form";
 import Calendar2 from "./components/calendar-02";
 import { LoginForm } from './components/login-form'
 import { SignInForm } from './components/signin-form'
+import Profile from './components/Layout/Profile'
+import Settings from './components/Layout/Settings'
 
 const routes = createBrowserRouter([
   {
@@ -28,6 +30,10 @@ const routes = createBrowserRouter([
     element: <DashboardLayout />,
   },
   {
+    path: "/settings",
+    element:<Settings/>
+  },
+  {
     path: "/add-event",
     element: <EventForm />,
   },
@@ -35,6 +41,10 @@ const routes = createBrowserRouter([
     path: "/calendar",
     element: <Calendar2 />,
   },
+  {
+    path: "/profile",
+    element:<Profile/>
+  }
 
 ]);
 

@@ -7,6 +7,7 @@ import {
 
 
 export function Dashboard({ children }) {
+  
   return (
     <SidebarProvider>
       <AppSidebar />

@@ -147,3 +147,20 @@
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
 }
+/* In your CSS file */
+.main-header {
+  width: 100%;
+  background: linear-gradient(to right, #003973, #e50808);
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.main-header h1 {
+  font-size: 2.5rem;
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}

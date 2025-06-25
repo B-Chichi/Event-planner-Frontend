@@ -1,13 +1,14 @@
 import { Dashboard } from "./dashboard";
 import { EventList } from "./Event-List";
 import { SearchBar } from "./Search-bar";
+import Header from "./Header";
 
 
 export function Layout() {
   return (
     <>
       <Dashboard>
-        <h1 className="text-5xl">Event Planner</h1>
+        <Header/>
         <SearchBar />
         <EventList />
       </Dashboard>
