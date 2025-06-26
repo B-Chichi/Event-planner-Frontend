@@ -50,7 +50,7 @@ const data = {
     },
     {
       title: "Logout",
-      url: "/login",
+      url: "/",
       icon: Trash2,
     },
     {

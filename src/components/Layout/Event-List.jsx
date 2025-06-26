@@ -1,14 +1,11 @@
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -73,38 +70,33 @@ export function EventList() {
             <DialogContent className="max-w-lg p-0 bg-background text-foreground">
               {selectedEvent && (
                 <Card className="bg-background w-full shadow-xl rounded-2xl">
-                  <CardHeader className="p-6 border-b">
+                  <CardHeader className="p-6">
                     <div className="flex items-center gap-6">
                       <img
                         src={selectedEvent.imageUrl}
                         alt={selectedEvent.name}
                         className="w-32 h-32 rounded-xl object-cover shadow-md"
                       />
-                      <div className="space-y-2">
+                      <div className="space-y-2 text-2xl">
                         <h1 className="text-3xl font-bold text-foreground">
                           {selectedEvent.name}
                         </h1>
                         <p className="text-muted-foreground">
-                          <strong className="text-foreground">Venue:</strong>{" "}
+                          <strong className="text-foreground">Venue:</strong>
                           {selectedEvent.venue}
                         </p>
                         <p className="text-muted-foreground">
-                          <strong className="text-foreground">Date:</strong>{" "}
+                          <strong className="text-foreground">Date:</strong>
                           {selectedEvent.date}
+                        </p>
+                        <p className="text-muted-foreground">
+                          <strong className="text-foreground">Rating:</strong>
+                          4.5 ⭐
                         </p>
                       </div>
                     </div>
                   </CardHeader>
-
                   <CardContent className="p-6 text-center space-y-4">
-                    <p className="text-lg">
-                      <strong className="text-foreground">Attendees:</strong>{" "}
-                      250+
-                    </p>
-                    <p className="text-lg">
-                      <strong className="text-foreground">Rating:</strong> 4.5
-                      ⭐
-                    </p>
                     <Button className="mt-2 w-full">View Reviews</Button>
                   </CardContent>
                 </Card>
