@@ -33,15 +33,32 @@ const schema = z.object({
 export function LoginForm({ className, ...props }) {
   const navigate = useNavigate();
 
-  const handleLogin = (data) => {
-    console.log(data);
-    navigate("/dashboard");
-  };
-  
-
   const form = useForm({
     resolver: zodResolver(schema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
+
+  const handleLogin = (values) => {
+    fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Invalid login");
+        return res.json();
+      })
+      .then((data) => {
+        localStorage.setItem("access_token", data.access_token);
+        alert("🟢 Logged in!");
+        navigate("/dashboard");
+      })
+      .catch((err) => alert(err.message));
+  };
+
   return (
     <div
       className={cn(
@@ -53,9 +70,7 @@ export function LoginForm({ className, ...props }) {
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Welcome back</CardTitle>
-          <CardDescription>
-            Login with your Apple or Google account
-          </CardDescription>
+          <CardDescription>Login with your email and password</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -103,8 +118,8 @@ export function LoginForm({ className, ...props }) {
                   </Button>
                 </div>
                 <div className="text-center text-sm">
-                  Don&apos;t have an account?{" "}
-                  <Link to={"/signin"} className="underline underline-offset-4">
+                  Don’t have an account?{" "}
+                  <Link to="/signin" className="underline underline-offset-4">
                     Sign up
                   </Link>
                 </div>

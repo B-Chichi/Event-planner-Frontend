@@ -22,7 +22,7 @@ import {
 } from "./ui/form";
 
 const schema = z.object({
-  full_name: z
+  name: z
     .string({ required_error: "Full name is required" })
     .nonempty({ message: "Full name is required" }),
   email: z
@@ -34,15 +34,45 @@ const schema = z.object({
 });
 
 export function SignInForm({ className, ...props }) {
+
+
   const navigate = useNavigate();
   const form = useForm({
     resolver: zodResolver(schema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
   });
 
+  
+
   const onSubmit = (values) => {
-    console.log(values);
-    navigate("/dashboard");
+    const details = {
+      name: values.name, 
+      email: values.email,
+      password: values.password,
+    };
+  
+  
+    fetch("http://localhost:5000/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(details),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Signup failed");
+        return res.json();
+      })
+      .then(() => {
+        alert("Signup successful!");
+        navigate("/dashboard"); 
+      })
+      .catch((err) => alert(err.message));
   };
+
+
   return (
     <div
       className={cn(
@@ -63,7 +93,7 @@ export function SignInForm({ className, ...props }) {
                 <div className="grid gap-3">
                   <FormField
                     control={form.control}
-                    name="full_name"
+                    name="name"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Full Name</FormLabel>
