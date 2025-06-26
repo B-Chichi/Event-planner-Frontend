@@ -10,8 +10,6 @@ export function Layout() {
   const [events, setEvent] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
 
-  console.log(filteredEvents)
-
   const handleFetch = () => {
     const token = localStorage.getItem("access_token");
 
