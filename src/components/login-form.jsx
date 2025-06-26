@@ -20,6 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
+import { BASE_URL } from "@/utils";
 
 const schema = z.object({
   email: z
@@ -42,7 +43,7 @@ export function LoginForm({ className, ...props }) {
   });
 
   const handleLogin = (values) => {
-    fetch("http://localhost:5000/login", {
+    fetch(`${BASE_URL}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
@@ -53,6 +54,7 @@ export function LoginForm({ className, ...props }) {
       })
       .then((data) => {
         localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("user", JSON.stringify(data.user));
         alert("🟢 Logged in!");
         navigate("/dashboard");
       })

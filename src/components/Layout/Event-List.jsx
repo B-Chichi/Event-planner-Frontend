@@ -1,53 +1,34 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-} from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { BASE_URL } from "@/utils";
 
 export function EventList() {
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [events, setEvent] = useState([]);
 
-  const events = [
-    {
-      id: 1,
-      name: "Beach Festival",
-      venue: "Mombasa Shoreline",
-      date: "July 15, 2025",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0CV1Nb-wajypPcr2fuTkbYLP61CyAiDa9_A&s",
-    },
-    {
-      id: 2,
-      name: "Live Concert",
-      venue: "Nairobi Arena",
-      date: "August 2, 2025",
-      imageUrl:
-        "https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?cs=srgb&dl=pexels-joshsorenson-976866.jpg&fm=jpg",
-    },
-    {
-      id: 3,
-      name: "Gala Dinner",
-      venue: "Safari Park Hotel",
-      date: "September 10, 2025",
-      imageUrl:
-        "https://media.istockphoto.com/id/479977238/photo/table-setting-for-an-event-party-or-wedding-reception.jpg?s=612x612&w=0&k=20&c=yIKLzW7wMydqmuItTTtUGS5cYTmrRGy0rXk81AltdTA=",
-    },
-    {
-      id: 4,
-      name: "Corporate Retreat",
-      venue: "Naivasha Resort",
-      date: "October 5, 2025",
-      imageUrl:
-        "https://saffronweddingstyle.com/wp-content/uploads/2023/08/corporate-event-planning.jpg",
-    },
-  ];
+  const handleFetch = () => {
+    const token = localStorage.getItem("access_token");
+
+    fetch(`${BASE_URL}/events`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setEvent(data);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    handleFetch();
+  }, []);
 
   return (
     <>
@@ -59,10 +40,10 @@ export function EventList() {
               <Card
                 onClick={() => setSelectedEvent(event)}
                 className="relative bg-cover bg-center h-96 text-white cursor-pointer"
-                style={{ backgroundImage: `url(${event.imageUrl})` }}
+                style={{ backgroundImage: `url(${event.image})` }}
               >
                 <div className="absolute top-0 left-0 w-full bg-black/40 p-4 z-10">
-                  <h2 className="text-3xl font-bold">{event.name}</h2>
+                  <h2 className="text-3xl font-bold">{event.title}</h2>
                 </div>
               </Card>
             </DialogTrigger>
@@ -73,11 +54,11 @@ export function EventList() {
                   <CardHeader className="p-6">
                     <div className="flex items-center gap-6">
                       <img
-                        src={selectedEvent.imageUrl}
-                        alt={selectedEvent.name}
-                        className="w-32 h-32 rounded-xl object-cover shadow-md"
+                        src={selectedEvent.image}
+                        alt={selectedEvent.title}
+                        className="w-46 h-46 rounded-xl object-cover shadow-md"
                       />
-                      <div className="space-y-2 text-2xl">
+                      <div className="space-y-2 text-xl">
                         <h1 className="text-3xl font-bold text-foreground">
                           {selectedEvent.name}
                         </h1>
@@ -88,6 +69,12 @@ export function EventList() {
                         <p className="text-muted-foreground">
                           <strong className="text-foreground">Date:</strong>
                           {selectedEvent.date}
+                        </p>
+                        <p className="text-muted-foreground">
+                          <strong className="text-foreground">
+                            Description:
+                          </strong>
+                          {selectedEvent.description}
                         </p>
                         <p className="text-muted-foreground">
                           <strong className="text-foreground">Rating:</strong>
