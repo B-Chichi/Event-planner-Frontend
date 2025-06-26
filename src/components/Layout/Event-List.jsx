@@ -1,35 +1,10 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
-import { BASE_URL } from "@/utils";
+import { useState } from "react";
 
-export function EventList() {
+export function EventList({ events }) {
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [events, setEvent] = useState([]);
-
-  const handleFetch = () => {
-    const token = localStorage.getItem("access_token");
-
-    fetch(`${BASE_URL}/events`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setEvent(data);
-      })
-      .catch((err) => console.error(err));
-  };
-
-  useEffect(() => {
-    handleFetch();
-  }, []);
-
   return (
     <>
       <h1 className="text-3xl text-center mt-10">Upcoming Events</h1>
@@ -49,7 +24,7 @@ export function EventList() {
             </DialogTrigger>
 
             <DialogContent className="max-w-lg p-0 bg-background text-foreground">
-              {selectedEvent && (
+              {selectedEvent && selectedEvent.id === event.id && (
                 <Card className="bg-background w-full shadow-xl rounded-2xl">
                   <CardHeader className="p-6">
                     <div className="flex items-center gap-6">
@@ -60,24 +35,24 @@ export function EventList() {
                       />
                       <div className="space-y-2 text-xl">
                         <h1 className="text-3xl font-bold text-foreground">
-                          {selectedEvent.name}
+                          {selectedEvent.title}
                         </h1>
                         <p className="text-muted-foreground">
-                          <strong className="text-foreground">Venue:</strong>
+                          <strong className="text-foreground">Venue:</strong>{" "}
                           {selectedEvent.venue}
                         </p>
                         <p className="text-muted-foreground">
-                          <strong className="text-foreground">Date:</strong>
+                          <strong className="text-foreground">Date:</strong>{" "}
                           {selectedEvent.date}
                         </p>
                         <p className="text-muted-foreground">
                           <strong className="text-foreground">
                             Description:
-                          </strong>
+                          </strong>{" "}
                           {selectedEvent.description}
                         </p>
                         <p className="text-muted-foreground">
-                          <strong className="text-foreground">Rating:</strong>
+                          <strong className="text-foreground">Rating:</strong>{" "}
                           4.5 ⭐
                         </p>
                       </div>
