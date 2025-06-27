@@ -16,7 +16,7 @@ export default function EventForm() {
       const token = localStorage.getItem("access_token");
       if (!token) throw new Error("Authentication token is missing.");
 
-      // Resolve category
+  
       const categoryRes = await fetch(`http://localhost:5000/categories`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

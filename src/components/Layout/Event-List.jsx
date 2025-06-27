@@ -30,7 +30,9 @@ export function EventList() {
 
   return (
     <>
-      <h1 className="text-3xl text-center mt-10">Upcoming Events</h1>
+      <h1 className="text-3xl text-center mt-10">
+        <strong>Your events</strong>
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-20">
         {events.map((event) => (
           <Dialog key={event.id}>
