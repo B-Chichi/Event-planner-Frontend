@@ -16,7 +16,6 @@ export default function EventForm() {
       const token = localStorage.getItem("access_token");
       if (!token) throw new Error("Authentication token is missing.");
 
-  
       const categoryRes = await fetch(`http://localhost:5000/categories`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -65,89 +64,67 @@ export default function EventForm() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start bg-background h-screen pt-12">
+    <div className="min-h-screen bg-slate-100 dark:bg-gray-900 text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12">
       <form
         onSubmit={handleSubmit(postEvent)}
-        className="space-y-6 w-full max-w-md p-6 bg-white rounded-lg shadow-md"
+        className="space-y-6 w-full max-w-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md p-8"
       >
-        <div>
-          <Label htmlFor="title">Title</Label>
-          <Input
-            id="title"
-            placeholder="e.g., Youth Hackathon"
-            {...register("title", { required: "Title is required" })}
-          />
-          {errors.title && (
-            <p className="text-red-500 text-sm">{errors.title.message}</p>
-          )}
-        </div>
+        <h2 className="text-2xl font-bold text-center text-indigo-600 dark:text-indigo-400 mb-4">
+          Create New Event
+        </h2>
 
-        <div>
-          <Label htmlFor="venue">Venue</Label>
-          <Input
-            id="venue"
-            placeholder="e.g., Eldoret Sports Club"
-            {...register("venue", { required: "Venue is required" })}
-          />
-          {errors.venue && (
-            <p className="text-red-500 text-sm">{errors.venue.message}</p>
-          )}
-        </div>
+        {[
+          {
+            name: "title",
+            label: "Title",
+            placeholder: "e.g., Youth Hackathon",
+          },
+          {
+            name: "venue",
+            label: "Venue",
+            placeholder: "e.g., Eldoret Sports Club",
+          },
+          { name: "date", label: "Date", type: "date" },
+          {
+            name: "description",
+            label: "Description",
+            placeholder: "e.g., Celebration of creativity and code",
+          },
+          {
+            name: "image",
+            label: "Image URL",
+            type: "url",
+            placeholder: "https://example.com/event.jpg",
+          },
+          {
+            name: "category_name",
+            label: "Category",
+            placeholder: "e.g., Tech, Music, Business",
+          },
+        ].map(({ name, label, placeholder, type = "text" }) => (
+          <div key={name}>
+            <Label htmlFor={name}>{label}</Label>
+            <Input
+              id={name}
+              type={type}
+              placeholder={placeholder}
+              {...register(name, { required: `${label} is required` })}
+              className="bg-gray-100 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500"
+            />
+            {errors[name] && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors[name]?.message}
+              </p>
+            )}
+          </div>
+        ))}
 
-        <div>
-          <Label htmlFor="date">Date</Label>
-          <Input
-            id="date"
-            type="date"
-            {...register("date", { required: "Date is required" })}
-          />
-          {errors.date && (
-            <p className="text-red-500 text-sm">{errors.date.message}</p>
-          )}
-        </div>
-
-        <div>
-          <Label htmlFor="description">Description</Label>
-          <Input
-            id="description"
-            placeholder="e.g., Celebration of creativity and code"
-            {...register("description", {
-              required: "Description is required",
-            })}
-          />
-          {errors.description && (
-            <p className="text-red-500 text-sm">{errors.description.message}</p>
-          )}
-        </div>
-
-        <div>
-          <Label htmlFor="image">Image URL</Label>
-          <Input
-            id="image"
-            type="url"
-            placeholder="https://example.com/event.jpg"
-            {...register("image", { required: "Image URL is required" })}
-          />
-          {errors.image && (
-            <p className="text-red-500 text-sm">{errors.image.message}</p>
-          )}
-        </div>
-
-        <div>
-          <Label htmlFor="category_name">Category</Label>
-          <Input
-            id="category_name"
-            placeholder="e.g., Tech, Music, Business"
-            {...register("category_name", { required: "Category is required" })}
-          />
-          {errors.category_name && (
-            <p className="text-red-500 text-sm">
-              {errors.category_name.message}
-            </p>
-          )}
-        </div>
-
-        <Button type="submit">Add Event</Button>
+        <Button
+          type="submit"
+          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold"
+        >
+          Add Event
+        </Button>
       </form>
     </div>
   );

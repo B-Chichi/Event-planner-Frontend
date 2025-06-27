@@ -1,10 +1,8 @@
 import { Dashboard } from "./dashboard";
 import { EventList } from "./Event-List";
-import { SearchBar } from "./Search-bar";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "@/utils";
 
-import Header from "./Header";
 
 export function Layout() {
   const [events, setEvent] = useState([]);
@@ -36,8 +34,6 @@ export function Layout() {
   return (
     <>
       <Dashboard>
-        <Header />
-        <SearchBar events={events} setFilteredEvents={setFilteredEvents} />
         <EventList events={filteredEvents} handleFetch={handleFetch} />
       </Dashboard>
     </>

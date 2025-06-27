@@ -7,6 +7,7 @@ import {
   SquarePlusIcon,
   Settings,
   User,
+  List,
 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
@@ -27,9 +28,9 @@ const data = {
       icon: Home,
     },
     {
-      title: "Dashboard",
+      title: "My Events",
       url: "/dashboard",
-      icon: LayoutDashboard,
+      icon: List,
     },
     {
       title: "Profile",
