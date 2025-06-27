@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import logo from "../assets/event planner logo.png";
 import { Link } from "react-router-dom";
 
-// Sample event data
 const publicEvents = [
   {
     id: 1,
@@ -56,9 +55,8 @@ const publicEvents = [
 
 export const HomePage = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-white text-gray-900">
-      {/* Header */}
-      <header className="bg-slate-100 px-6 py-4 flex justify-between items-center shadow-sm">
+    <div className="flex flex-col min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
+      <header className="bg-slate-100 dark:bg-gray-800 px-6 py-4 flex justify-between items-center shadow-sm">
         <img src={logo} alt="EventPlanner Logo" className="w-14 h-14" />
         <div className="flex gap-4">
           <Link to="/signin">
@@ -70,15 +68,15 @@ export const HomePage = () => {
         </div>
       </header>
 
-      {/* Hero */}
       <section className="text-center py-12 px-4">
         <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
           Welcome to Event Planner
         </h1>
-        <p className="mt-4 text-xl text-gray-700">Let us plan your events</p>
+        <p className="mt-4 text-xl text-gray-700 dark:text-gray-300">
+          Let us plan your events
+        </p>
       </section>
 
-      {/* Event Grid */}
       <main className="px-6 max-w-7xl mx-auto flex-grow">
         <h2 className="text-3xl font-semibold text-center mb-8">
           Upcoming Events
@@ -87,24 +85,39 @@ export const HomePage = () => {
           {publicEvents.map((event) => (
             <div
               key={event.id}
-              className="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group"
             >
               <img
                 src={event.image}
                 alt={event.title}
-                className="h-48 w-full object-cover"
+                className="h-48 w-full object-cover transform transition-transform duration-300 group-hover:scale-105"
               />
               <div className="p-4">
                 <h3 className="text-xl font-semibold">{event.title}</h3>
                 <p className="text-sm text-gray-500">{event.date}</p>
-                <p className="mt-2 text-gray-700">{event.description}</p>
+                <p className="mt-2 text-gray-700 dark:text-gray-300">
+                  {event.description}
+                </p>
               </div>
             </div>
           ))}
         </div>
+
+        <section className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl mt-20 p-10 text-center shadow-lg">
+          <h2 className="text-3xl font-bold mb-4">Be the next big thing.</h2>
+          <p className="text-lg max-w-2xl mx-auto mb-6">
+            Dream big, plan boldly, and bring your vision to life with Event
+            Planner. Whether it's a wedding, festival, or startup showcase—we’ll
+            help make it unforgettable.
+          </p>
+          <Link to="/signin">
+            <Button className="bg-white text-indigo-700 font-semibold hover:bg-gray-100 transition">
+              Get Started for Free
+            </Button>
+          </Link>
+        </section>
       </main>
 
-      {/* Footer */}
       <footer className="bg-slate-900 text-white text-center py-6 mt-16">
         <p className="text-sm">
           © {new Date().getFullYear()} Event Planner. All rights reserved.
