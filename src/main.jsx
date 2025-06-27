@@ -10,6 +10,8 @@ import { LoginForm } from "./components/login-form";
 import { SignInForm } from "./components/signin-form";
 import { ProfilePage } from "./Pages/Profile";
 import { SettingsPage } from "./Pages/Settings";
+import AboutUs from "./components/Layout/AboutUs";
+import BookingTicket from "./components/Layout/BookingTicket";
 
 const routes = createBrowserRouter([
   {
@@ -19,6 +21,10 @@ const routes = createBrowserRouter([
   {
     path: "/login",
     element: <LoginForm />,
+  },
+  {
+    path: "/booking",
+    element:<BookingTicket/>
   },
   {
     path: "/signin",
@@ -35,6 +41,10 @@ const routes = createBrowserRouter([
   {
     path: "/add-event",
     element: <AddEventPage />,
+  },
+  {
+    path: "/about-us",
+    element:<AboutUs/>
   },
   {
     path: "/calendar",
