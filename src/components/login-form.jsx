@@ -64,12 +64,12 @@ export function LoginForm({ className, ...props }) {
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-start bg-background h-screen pt-12",
+        "flex flex-col items-center justify-start min-h-screen text-gray-900 dark:bg-gray-900 dark:text-black px-6 py-12",
         className
       )}
       {...props}
     >
-      <Card>
+      <Card className=" text-gray-900 dark:bg-gray-900 dark:text-white px-6 py-12">
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Welcome back</CardTitle>
           <CardDescription>Login with your email and password</CardDescription>

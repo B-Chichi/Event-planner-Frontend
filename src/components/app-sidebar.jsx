@@ -69,7 +69,7 @@ export function AppSidebar({ ...props }) {
         <h1 className="text-2xl">Event Planner</h1>
         <NavMain items={data.navMain} />
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className=" text-gray-900 dark:bg-gray-900 dark:text-white px-6 py-12">
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarRail />
