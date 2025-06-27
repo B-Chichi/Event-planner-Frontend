@@ -1,6 +1,12 @@
 import { Button } from "@/components/ui/button";
 import logo from "../assets/event planner logo.png";
 import { Link } from "react-router-dom";
+import {
+  FaInstagram,
+  FaLinkedin,
+  FaXTwitter,
+  FaFacebookF,
+} from "react-icons/fa6";
 
 const publicEvents = [
   {
@@ -118,10 +124,126 @@ export const HomePage = () => {
         </section>
       </main>
 
-      <footer className="bg-slate-900 text-white text-center py-6 mt-16">
-        <p className="text-sm">
-          © {new Date().getFullYear()} Event Planner. All rights reserved.
-        </p>
+      <footer className="bg-slate-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 mt-16 px-6 pt-12 pb-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+          <div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+              Event Planner
+            </h3>
+            <p className="text-sm">
+              Build meaningful moments. From weddings to community events, we
+              help you organize what matters most.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 uppercase tracking-wider">
+              Company
+            </h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="#" className="hover:underline">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline">
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline">
+                  Partners
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 uppercase tracking-wider">
+              Explore
+            </h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="#" className="hover:underline">
+                  Event Ideas
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline">
+                  Templates
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline">
+                  Pricing
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-300 dark:border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-sm">
+          <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-4 md:mb-0">
+            <a href="#" className="hover:underline">
+              Terms and conditions
+            </a>
+            <a href="#" className="hover:underline">
+              Privacy
+            </a>
+            <a href="#" className="hover:underline">
+              Cookies
+            </a>
+            <a href="#" className="hover:underline">
+              Accessibility
+            </a>
+          </div>
+          <div className="flex gap-3">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="hover:text-blue-500"
+            >
+              <FaFacebookF />
+            </a>
+
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="hover:text-pink-500"
+            >
+              <FaInstagram />
+            </a>
+
+            <a
+              href="https://x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter / X"
+              className="hover:text-gray-700 dark:hover:text-white"
+            >
+              <FaXTwitter />
+            </a>
+
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="hover:text-blue-600"
+            >
+              <FaLinkedin />
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-6 text-center text-xs text-gray-500 dark:text-gray-400">
+          Kenya | English
+        </div>
       </footer>
     </div>
   );
