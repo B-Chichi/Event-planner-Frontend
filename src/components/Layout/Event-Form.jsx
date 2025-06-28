@@ -64,7 +64,7 @@ export default function EventForm() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-gray-900 text-gray-800 dark:text-white flex flex-col items-center justify-center px-4 py-12">
+    <div className="flex flex-col items-center justify-start min-h-screen text-gray-900 dark:bg-gray-900 dark:text-white px-6 py-12">
       <form
         onSubmit={handleSubmit(postEvent)}
         className="space-y-6 w-full max-w-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md p-8"
@@ -102,7 +102,7 @@ export default function EventForm() {
             placeholder: "e.g., Tech, Music, Business",
           },
         ].map(({ name, label, placeholder, type = "text" }) => (
-          <div key={name}>
+          <div key={name} className="flex flex-col gap-2">
             <Label htmlFor={name}>{label}</Label>
             <Input
               id={name}

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import logo from "../assets/event planner logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   FaInstagram,
   FaLinkedin,
@@ -9,70 +9,94 @@ import {
   FaFacebookF,
 } from "react-icons/fa6";
 
-
 const publicEvents = [
   {
     id: 1,
     title: "Outdoor Wedding",
     date: "Aug 20, 2025",
     description: "A beautiful garden wedding in the Rift Valley.",
-    image: "https://static.vecteezy.com/system/resources/thumbnails/047/009/091/small_2x/outdoor-wedding-reception-warm-glow-of-the-lights-creates-a-magical-atmosphere-as-guests-gather-the-background-is-blurred-joyful-ambiance-of-the-celebration-romantic-and-festive-photo.jpg",
+    image:
+      "https://static.vecteezy.com/system/resources/thumbnails/047/009/091/small_2x/outdoor-wedding-reception-warm-glow-of-the-lights-creates-a-magical-atmosphere-as-guests-gather-the-background-is-blurred-joyful-ambiance-of-the-celebration-romantic-and-festive-photo.jpg",
   },
   {
     id: 2,
     title: "Tech Summit",
     date: "Sep 12, 2025",
     description: "Explore innovations with Kenya's top developers.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsAxKjvKu7Fgo8gl_M3A3lS8AV2TQc_Ecuw&s",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsAxKjvKu7Fgo8gl_M3A3lS8AV2TQc_Ecuw&s",
   },
   {
     id: 3,
     title: "Cultural Festival",
     date: "Oct 3, 2025",
     description: "Celebrate heritage with food, music, and dance.",
-    image: "https://media.istockphoto.com/id/2186806261/video/young-chiapanecas-dancing-outdoors.jpg?b=1&s=640x640&k=20&c=nOhQ6JFRUVZ9du3_pFLWfBrCLL3B5UoKkSgVE-MittI=",
+    image:
+      "https://media.istockphoto.com/id/2186806261/video/young-chiapanecas-dancing-outdoors.jpg?b=1&s=640x640&k=20&c=nOhQ6JFRUVZ9du3_pFLWfBrCLL3B5UoKkSgVE-MittI=",
   },
   {
     id: 4,
     title: "Fashion Gala",
     date: "Nov 11, 2025",
     description: "Experience elegance with designers from East Africa.",
-    image: "https://assets.vogue.com/photos/681a5cbf91e4a54aaf76b6fd/4:3/w_2664,h_1998,c_limit/Holding%20Collage%20(2).jpg",
+    image:
+      "https://assets.vogue.com/photos/681a5cbf91e4a54aaf76b6fd/4:3/w_2664,h_1998,c_limit/Holding%20Collage%20(2).jpg",
   },
   {
     id: 5,
     title: "Book Fair",
     date: "Dec 2, 2025",
     description: "Join fellow readers and authors for book showcases.",
-    image: "https://media.istockphoto.com/id/1338096484/photo/south-bank-london.jpg?s=612x612&w=0&k=20&c=LQLzirK4HlVfNskuxhuS2-aP-TFPV8WPIfAWjLA4bsU=",
+    image:
+      "https://media.istockphoto.com/id/1338096484/photo/south-bank-london.jpg?s=612x612&w=0&k=20&c=LQLzirK4HlVfNskuxhuS2-aP-TFPV8WPIfAWjLA4bsU=",
   },
   {
     id: 6,
     title: "Startup Pitch Night",
     date: "Jan 14, 2026",
     description: "Where innovation meets opportunity—live pitches!",
-    image: "https://static.wixstatic.com/media/f8d418_30bc5f38ec25450eb3e7f2a01acc7024~mv2.jpg/v1/fill/w_1920,h_1080,al_c,q_90/f8d418_30bc5f38ec25450eb3e7f2a01acc7024~mv2.jpg",
+    image:
+      "https://static.wixstatic.com/media/f8d418_30bc5f38ec25450eb3e7f2a01acc7024~mv2.jpg/v1/fill/w_1920,h_1080,al_c,q_90/f8d418_30bc5f38ec25450eb3e7f2a01acc7024~mv2.jpg",
   },
 ];
 
 export const HomePage = () => {
   const [bookedEvents, setBookedEvents] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleBooking = (id) => {
     setBookedEvents((prev) => ({ ...prev, [id]: true }));
   };
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const session = localStorage.getItem("access_token");
+
+    if (session) {
+      setIsLoggedIn(true);
+    }
+  }, [pathname]);
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
       <header className="bg-slate-100 dark:bg-gray-800 px-6 py-4 flex justify-between items-center shadow-sm">
         <img src={logo} alt="EventPlanner Logo" className="w-14 h-14" />
         <div className="flex gap-4">
-          <Link to="/signin">
-            <Button variant="secondary">Get Started</Button>
-          </Link>
-          <Link to="/login">
-            <Button>Log in</Button>
-          </Link>
+          {isLoggedIn ? (
+            <Link to={"/dashboard"}>
+              <Button >Dashboard</Button>
+            </Link>
+          ) : (
+            <>
+              <Link to="/signin">
+                <Button variant="secondary">Get Started</Button>
+              </Link>
+              <Link to="/login">
+                <Button>Log in</Button>
+              </Link>
+            </>
+          )}
         </div>
       </header>
 
@@ -114,7 +138,6 @@ export const HomePage = () => {
                     Book Ticket
                   </Button>
                 </Link>
-                
               </div>
             </div>
           ))}
