@@ -40,13 +40,16 @@ export function EventList() {
     }
 
     if (category !== "All") {
-      filtered = filtered.filter((event) => event.category === category);
+      filtered = filtered.filter((event) => event.category?.name === category);
     }
 
     setFilteredEvents(filtered);
   }, [searchTerm, category, events]);
 
-  const uniqueCategories = ["All", ...new Set(events.map((e) => e.category))];
+  const uniqueCategories = [
+    "All",
+    ...new Set(events.map((e) => e.category?.name).filter(Boolean)),
+  ];
 
   if (loading) {
     return (
@@ -73,8 +76,8 @@ export function EventList() {
           onChange={(e) => setCategory(e.target.value)}
           className="w-full md:w-1/3 h-12 px-3 rounded-md border border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-          {uniqueCategories.map((cat, i) => (
-            <option key={i} value={cat}>
+          {uniqueCategories.map((cat) => (
+            <option key={cat} value={cat}>
               {cat}
             </option>
           ))}
