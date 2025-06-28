@@ -19,50 +19,56 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-
-const data = {
-  navMain: [
-    {
-      title: "Home",
-      url: "/",
-      icon: Home,
-    },
-    {
-      title: "My Events",
-      url: "/dashboard",
-      icon: List,
-    },
-    {
-      title: "Profile",
-      url: "/profile",
-      icon: User,
-    },
-    {
-      title: "Add Event",
-      url: "/add-event",
-      icon: SquarePlusIcon,
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Calendar",
-      url: "/calendar",
-      icon: Calendar,
-    },
-    {
-      title: "Logout",
-      url: "/login",
-      icon: Trash2,
-    },
-    {
-      title: "Settings",
-      url: "/settings",
-      icon: Settings,
-    },
-  ],
-};
+import { useNavigate } from "react-router-dom";
 
 export function AppSidebar({ ...props }) {
+  const navigate = useNavigate()
+
+  const data = {
+    navMain: [
+      {
+        title: "Home",
+        url: "/",
+        icon: Home,
+      },
+      {
+        title: "My Events",
+        url: "/dashboard",
+        icon: List,
+      },
+      {
+        title: "Profile",
+        url: "/profile",
+        icon: User,
+      },
+      {
+        title: "Add Event",
+        url: "/add-event",
+        icon: SquarePlusIcon,
+      },
+    ],
+    navSecondary: [
+      {
+        title: "Calendar",
+        url: "/calendar",
+        icon: Calendar,
+      },
+      {
+        title: "Logout",
+        onClick: () => {
+          localStorage.removeItem("access_token");
+          navigate("/login")
+        },
+        icon: Trash2,
+      },
+      {
+        title: "Settings",
+        url: "/settings",
+        icon: Settings,
+      },
+    ],
+  };
+
   return (
     <Sidebar className="border-r-0" {...props}>
       <SidebarHeader>

@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { BASE_URL } from "@/utils";
 
 export function EventList() {
   const [events, setEvents] = useState([]);
@@ -15,7 +16,7 @@ export function EventList() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch("http://localhost:5000/events");
+        const res = await fetch(`${BASE_URL}/events`);
         const data = await res.json();
         setEvents(data);
         setFilteredEvents(data);
@@ -94,7 +95,7 @@ export function EventList() {
                   className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="p-4">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-xl font-semibold text-white dark:text-white">
                     {event.title}
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -118,7 +119,7 @@ export function EventList() {
                         className="w-40 h-40 object-cover rounded-lg"
                       />
                       <div className="space-y-2 text-base">
-                        <h1 className="text-xl font-semibold">
+                        <h1 className="text-xl font-semibold text-white">
                           {selectedEvent.title}
                         </h1>
                         <p className="text-gray-600 dark:text-gray-300">

@@ -4,9 +4,21 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 export function Dashboard({ children }) {
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    const session = localStorage.getItem("access_token")
+
+    if (!session) {
+      navigate("/login")
+    }
+  }, [pathname])
   
   return (
     <SidebarProvider>
