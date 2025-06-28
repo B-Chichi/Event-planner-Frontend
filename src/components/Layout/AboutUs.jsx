@@ -27,7 +27,12 @@ export default function AboutUs() {
             key={index}
             className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md text-center p-6"
           >
-            <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-200 dark:bg-gray-700" />
+            <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-200 dark:bg-gray-700">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png"
+                alt="profile picture"
+              />
+            </div>
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
               {dev.name}
             </h3>

@@ -12,6 +12,7 @@ import { ProfilePage } from "./Pages/Profile";
 import { SettingsPage } from "./Pages/Settings";
 import AboutUs from "./components/Layout/AboutUs";
 import BookingTicket from "./components/Layout/BookingTicket";
+import { Toaster } from "react-hot-toast";
 
 const routes = createBrowserRouter([
   {
@@ -58,6 +59,7 @@ const routes = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <Toaster position="top-right"/>
     <RouterProvider router={routes} />
   </StrictMode>
 );

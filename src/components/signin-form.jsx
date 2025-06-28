@@ -20,6 +20,8 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
+import { toast } from "react-hot-toast";
+import { BASE_URL } from "@/utils";
 
 const schema = z.object({
   name: z
@@ -54,9 +56,10 @@ export function SignInForm({ className, ...props }) {
       email: values.email,
       password: values.password,
     };
+
+    console.log(details)
   
-  
-    fetch("http://localhost:5000/signin", {
+    fetch(`${BASE_URL}/signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(details),
@@ -65,9 +68,11 @@ export function SignInForm({ className, ...props }) {
         if (!res.ok) throw new Error("Signup failed");
         return res.json();
       })
-      .then(() => {
-        alert("Signup successful!");
-        navigate("/dashboard"); 
+      .then((data) => {
+        localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        toast.success(data.message);
+        navigate("/dashboard");
       })
       .catch((err) => alert(err.message));
   };

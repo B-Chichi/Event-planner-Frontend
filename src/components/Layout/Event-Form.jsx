@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { toast } from "react-hot-toast";
+import { BASE_URL } from "@/utils";
 
 export default function EventForm() {
   const {
@@ -16,7 +18,7 @@ export default function EventForm() {
       const token = localStorage.getItem("access_token");
       if (!token) throw new Error("Authentication token is missing.");
 
-      const categoryRes = await fetch(`http://localhost:5000/categories`, {
+      const categoryRes = await fetch(`${BASE_URL}/categories`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: eventData.category_name }),
@@ -41,7 +43,7 @@ export default function EventForm() {
         category_id: category.id,
       };
 
-      const eventRes = await fetch(`http://localhost:5000/events`, {
+      const eventRes = await fetch(`${BASE_URL}/events`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -55,7 +57,7 @@ export default function EventForm() {
         throw new Error(result.message || "Event creation failed.");
       }
 
-      alert("Event created successfully!");
+      toast.success("Event created successfully");
       reset();
     } catch (err) {
       console.error("Failed to post event:", err);
