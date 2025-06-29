@@ -14,12 +14,17 @@ export function EventList() {
   const [category, setCategory] = useState("All");
   const [filteredEvents, setFilteredEvents] = useState([]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchEvents = async () => {
+      const token = localStorage.getItem("access_token");
       try {
-        const res = await fetch(`${BASE_URL}/events`);
+        const res = await fetch(`${BASE_URL}/events`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const data = await res.json();
         setEvents(data);
         setFilteredEvents(data);
