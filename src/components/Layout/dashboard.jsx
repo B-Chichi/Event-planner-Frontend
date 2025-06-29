@@ -30,7 +30,7 @@ export function Dashboard({ children }) {
           </div>
         </header>
 
-        <div className="flex flex-1 flex-col gap-3 px-4 py-10">{children}</div>
+        <div className="flex flex-1 flex-col gap-3 px-4">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

@@ -13,6 +13,7 @@ import { SettingsPage } from "./Pages/Settings";
 import AboutUs from "./components/Layout/AboutUs";
 import BookingTicket from "./components/Layout/BookingTicket";
 import { Toaster } from "react-hot-toast";
+import { ReviewsPage } from "./Pages/Reviews";
 
 const routes = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const routes = createBrowserRouter([
   },
   {
     path: "/booking",
-    element:<BookingTicket/>
+    element: <BookingTicket />,
   },
   {
     path: "/signin",
@@ -44,8 +45,12 @@ const routes = createBrowserRouter([
     element: <AddEventPage />,
   },
   {
+    path: "/events/:eventId/reviews",
+    element: <ReviewsPage />,
+  },
+  {
     path: "/about-us",
-    element:<AboutUs/>
+    element: <AboutUs />,
   },
   {
     path: "/calendar",
@@ -59,7 +64,7 @@ const routes = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Toaster position="top-right"/>
+    <Toaster position="top-right" />
     <RouterProvider router={routes} />
   </StrictMode>
 );

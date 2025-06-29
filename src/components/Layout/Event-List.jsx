@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,8 @@ export function EventList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("All");
   const [filteredEvents, setFilteredEvents] = useState([]);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -142,7 +145,10 @@ export function EventList() {
                     </div>
                   </CardHeader>
                   <CardContent className="p-6">
-                    <Button className="w-full bg-black hover:bg-gray-800 text-white">
+                    <Button
+                      className="w-full bg-black hover:bg-gray-800 text-white"
+                      onClick={() => navigate(`/events/${event.id}/reviews`)}
+                    >
                       View Reviews
                     </Button>
                   </CardContent>
