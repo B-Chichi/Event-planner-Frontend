@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-hot-toast";
 import { BASE_URL } from "@/utils";
+import { useNavigate } from "react-router-dom";
 
 export default function EventForm() {
   const {
@@ -12,6 +13,8 @@ export default function EventForm() {
     formState: { errors },
     reset,
   } = useForm();
+
+  const navigate = useNavigate()
 
   const postEvent = async (eventData) => {
     try {
@@ -59,6 +62,7 @@ export default function EventForm() {
 
       toast.success("Event created successfully");
       reset();
+      navigate("/dashboard")
     } catch (err) {
       console.error("Failed to post event:", err);
       alert("Error: " + err.message);
