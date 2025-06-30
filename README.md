@@ -1,5 +1,5 @@
 ### Event Planner Frontend
-
+[Event Planner](https://event-planner-frontend-production.up.railway.app/)
 A responsive React-based frontend for the Event Planner app where users can sign up, log in, browse events, create their own events, book tickets, and write or view event reviews. Built using React, React Router, TailwindCSS, and Zod for form validation.
 
 ---
